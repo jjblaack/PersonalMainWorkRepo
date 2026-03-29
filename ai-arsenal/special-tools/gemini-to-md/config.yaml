@@ -1,0 +1,26 @@
+name: gemini-to-md
+version: 1.0.0
+author: Claude Code Assistant
+title: Gemini对话转Markdown
+description: 将Gemini对话链接转换为结构化的Markdown格式
+category: utility
+tags: ["gemini", "markdown", "converter", "utility"]
+
+# 参数定义
+arguments:
+  url:
+    type: string
+    description: Gemini对话链接
+    required: true
+
+# 使用示例
+examples:
+  - input: "/gemini-to-md https://gemini.google.com/share/abc123"
+    output: "显示使用本地工具的说明"
+
+# 兼容性
+compatible_with:
+  claude_code: ">=1.0.0"
+
+# 许可证
+license: MIT

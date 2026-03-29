@@ -1,0 +1,52 @@
+{
+  "selectors": [
+    "[data-message-author-role='user']",
+    "[data-message-author-role='model']",
+    ".ql-editor",
+    "[jsname*='message']",
+    ".gem-content",
+    "[role='listitem']"
+  ],
+  "question_indicators": [
+    "?",
+    "如何",
+    "什么",
+    "为什么",
+    "怎么",
+    "what",
+    "how",
+    "why",
+    "which",
+    "问题",
+    "问",
+    "请教",
+    "请问"
+  ],
+  "answer_indicators": [
+    "根据",
+    "因此",
+    "所以",
+    "总结",
+    "结论",
+    "分析",
+    "a:",
+    "answer:",
+    "回答",
+    "是的",
+    "不是"
+  ],
+  "skip_keywords": [
+    "sign in",
+    "sign up",
+    "login",
+    "sign in with",
+    "google",
+    "account",
+    "gemini",
+    "loading",
+    "share",
+    "menu",
+    "settings",
+    "profile"
+  ]
+}
