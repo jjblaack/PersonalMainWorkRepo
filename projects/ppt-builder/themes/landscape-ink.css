@@ -1,0 +1,135 @@
+/* 山水画水墨风格主题 */
+/* Chinese Landscape Painting Theme */
+
+/* 背景设计 */
+.reveal {
+  background: #f8f5f0; /* 米白色背景，类似宣纸 */
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDxkZWZzPgogICAgPHBhdHRlcm4gaWQ9InRleHR1cmUiIHg9IiIgeT0iIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSJub25lIi8+CiAgICA8L3BhdHRlcm4+CiAgPC9kZWZzPgogIE9wYWNpdHkgPSIwLjAzIiBzdHJva2U9IiM0YzRjNGMiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgb3BhY2l0eT0iMC4wNSIvPgo8L3N2Zz4=');
+  background-size: cover;
+  background-repeat: repeat;
+}
+
+/* 标题样式 */
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+  color: #2c3e50;
+  font-family: 'Noto Serif SC', 'SimSun', serif; /* 中文字体 */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  font-weight: bold;
+  border-bottom: 2px solid #5c4033; /* 墨色下划线 */
+  padding-bottom: 10px;
+}
+
+/* 文字颜色和字体 */
+.reveal p, .reveal li {
+  color: #333333;
+  font-family: 'Noto Sans SC', 'SimHei', sans-serif;
+  text-shadow: 0px 0px 1px rgba(0,0,0,0.05);
+}
+
+/* 代码块样式 */
+.reveal code {
+  background: rgba(248, 245, 240, 0.8);
+  border: 1px solid #d6d6d6;
+  border-radius: 4px;
+  color: #2c3e50;
+}
+
+/* 代码块高亮 */
+.reveal pre code {
+  background: #f8f5f0;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+
+/* 幻灯片边框效果 */
+.reveal .slides section {
+  border-radius: 8px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.7); /* 半透明白色背景 */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(92, 64, 51, 0.1); /* 淡墨色边框 */
+  backdrop-filter: blur(2px);
+}
+
+/* 引用样式 */
+.reveal blockquote {
+  border-left: 4px solid #5c4033; /* 墨色左边框 */
+  background: rgba(248, 245, 240, 0.5);
+  padding: 10px 20px;
+  font-style: italic;
+  color: #444;
+  margin: 20px 0;
+}
+
+/* 链接样式 */
+.reveal a {
+  color: #5c4033; /* 墨色链接 */
+  text-decoration: none;
+  border-bottom: 1px dotted #5c4033;
+}
+
+.reveal a:hover {
+  color: #3c2a13;
+  border-bottom: 2px solid #3c2a13;
+}
+
+/* 表格样式 */
+.reveal table {
+  border-collapse: collapse;
+  border: 1px solid #5c4033;
+}
+
+.reveal table th, .reveal table td {
+  border: 1px solid #5c4033;
+  padding: 8px 12px;
+}
+
+.reveal table th {
+  background: rgba(92, 64, 51, 0.1);
+  font-weight: bold;
+}
+
+/* 进度条样式 */
+.reveal .progress {
+  background: rgba(248, 245, 240, 0.8);
+  height: 4px;
+}
+
+.reveal .progress span {
+  background: #5c4033; /* 墨色进度条 */
+  height: 4px;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+
+/* 水墨笔触装饰 */
+.reveal .slides::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 100px;
+  height: 100px;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8cGF0aCBkPSJNMjAgMjBDNTAgMTAgODAgMjAgOTAgNTBDODAgODAgNTAgOTAgMjAgODBDMTAgNzAgMTAgNDAgMjAgMjBaIiBmaWxsPSJub25lIiBzdHJva2U9IiM1YzQwMzMiIHN0cm9rZS1vcGFjaXR5PSIwLjEiIHN0cm9rZS13aWR0aD0iMiIvPgo8L3N2Zz4=');
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.reveal .slides::after {
+  content: "";
+  position: absolute;
+  bottom: 15%;
+  left: 10%;
+  width: 80px;
+  height: 80px;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8cGF0aCBkPSJNMTAgNDBDNDAgMzAgNjAgNDAgNzAgNjBDNjAgODAgNDAgOTAgMTAgODBDMCA3MCAwIDUwIDEwIDQweiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNWM0MDMzIiBzdHJva2Utb3BhY2l0eT0iMC4xIiBzdHJva2Utd2lkdGg9IjIiLz4KPC9zdmc+');
+  opacity: 0.1;
+  z-index: 0;
+}
+
+/* 按钮样式 */
+.reveal .controls button.active {
+  border-color: #5c4033;
+}
+
+.reveal .controls button:focus {
+  outline: 2px solid #5c4033;
+}

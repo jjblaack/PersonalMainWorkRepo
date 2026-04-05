@@ -1,0 +1,29 @@
+{
+  "name": "markdown-ppt-builder",
+  "version": "1.0.0",
+  "description": "A tool to convert markdown files to PowerPoint or PDF presentations",
+  "main": "converter.js",
+  "scripts": {
+    "convert:pptx": "node converter.js sample-presentation.md output.pptx pptx",
+    "convert:pdf": "node converter.js sample-presentation.md output.pdf pdf",
+    "convert:html": "node converter.js sample-presentation.md slides.html html --presentation",
+    "convert:ink-theme": "node converter.js sample-presentation.md slides-ink.html html --presentation --theme landscape-ink",
+    "demo": "npm run convert:pptx && npm run convert:pdf && npm run convert:html",
+    "demo-ink": "npm run convert:ink-theme"
+  },
+  "bin": {
+    "md2ppt": "./converter.js"
+  },
+  "keywords": [
+    "markdown",
+    "presentation",
+    "powerpoint",
+    "pdf",
+    "conversion",
+    "revealjs"
+  ],
+  "author": "Jett",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
+}
