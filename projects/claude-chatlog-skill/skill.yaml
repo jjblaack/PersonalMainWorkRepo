@@ -1,0 +1,95 @@
+# Claude Chatlog Skill 配置
+
+技能名称：chatlog
+描述：自动记录 Claude Code 对话内容到本地目录
+
+---
+
+## Skill 目录结构
+
+```
+~/.claude/skills/chatlog/
+├── skill.yaml              # Skill 配置（本文件）
+└── scripts/
+    ├── chat_logger.py      # 日志记录
+    └── update_index.py     # 索引生成
+```
+
+---
+
+## 安装步骤
+
+### 1. 复制 Skill 到 Claude Code 目录
+
+```bash
+# 创建 skill 目录
+mkdir -p ~/.claude/skills/chatlog/scripts
+
+# 复制脚本
+cp /path/to/claude-chatlog-skill/scripts/*.py ~/.claude/skills/chatlog/scripts/
+chmod +x ~/.claude/skills/chatlog/scripts/*.py
+```
+
+### 2. 创建 skill.yaml
+
+在 `~/.claude/skills/chatlog/` 目录下创建 `skill.yaml`：
+
+```yaml
+name: chatlog
+description: 记录 Claude Code 对话内容到本地 chatlog 目录
+version: 0.1.0
+
+commands:
+  - name: init
+    description: 初始化新会话
+    command: python3 ~/.claude/skills/chatlog/scripts/chat_logger.py --init "${args}"
+
+  - name: log
+    description: 记录对话（用户输入 + AI 回复）
+    command: python3 ~/.claude/skills/chatlog/scripts/chat_logger.py --user "${user}" --ai "${ai}"
+
+  - name: complete
+    description: 标记会话完成
+    command: python3 ~/.claude/skills/chatlog/scripts/chat_logger.py --complete
+
+  - name: index
+    description: 生成日志索引
+    command: python3 ~/.claude/skills/chatlog/scripts/update_index.py
+
+  - name: check
+    description: 检查中断的会话
+    command: python3 ~/.claude/skills/chatlog/scripts/chat_logger.py --check-interrupt
+```
+
+### 3. 配置 settings.json（可选）
+
+编辑 `~/.claude/settings.json`，添加 hooks：
+
+```json
+{
+  "hooks": {
+    "before-everything": "python3 ~/.claude/skills/chatlog/scripts/chat_logger.py --check-interrupt 2>/dev/null || true"
+  }
+}
+```
+
+---
+
+## 使用方法
+
+在 Claude Code 中使用：
+
+```
+/skill chatlog init "会议记录"     # 初始化会话
+/skill chatlog check               # 检查中断会话
+/skill chatlog index               # 生成索引
+/skill chatlog complete            # 标记完成
+```
+
+---
+
+## 日志位置
+
+默认在：`~/.claude/skills/chatlog/chatlog/`
+
+可通过环境变量 `CHATLOG_ROOT` 自定义。
