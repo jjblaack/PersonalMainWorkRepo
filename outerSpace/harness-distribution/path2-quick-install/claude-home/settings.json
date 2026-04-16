@@ -1,0 +1,46 @@
+{
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"AI 正在等待你的授权...\" with title \"Claude Code\"'; afplay /System/Library/Sounds/Ping.aiff &"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"任务已执行完毕\" with title \"Claude Code\"'; afplay /System/Library/Sounds/Glass.aiff &"
+          },
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/gotchas-prompt.sh"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/secret-scan.sh"
+          },
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/dangerous-command.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "model": "opus"
+}

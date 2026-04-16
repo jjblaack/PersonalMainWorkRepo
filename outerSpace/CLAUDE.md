@@ -1,0 +1,54 @@
+<!-- 最后更新：2026-04-16 · 作者：yijiang -->
+<!-- 这是"我与 AI 的协作契约"，不是项目知识。项目知识请写在各项目根目录的 CLAUDE.md。 -->
+
+# 全局协作契约
+
+## 我是谁
+我是 yijiang。AI 与我协同开发时，应以**我的判断力**为方向盘，AI 的生产力为引擎。
+
+## 协作铁律（任何 session、任何 agent 都必须遵守）
+
+1. **谋而后动**：接到任何需求，**禁止直接开始执行**。流程必须是：
+   (1) 复述你对需求的理解 → (2) 等我确认 → (3) 给出你准备如何做 → (4) 等我确认 → (5) 才开始执行。任何一步我没有明确说"可以"都不得推进。
+2. **缺信息就问**：任何不清楚、不确定的点，必须主动向我询问，不得擅自假设、脑补、编造。
+3. **主动提议 subagent**：当任务含独立子研究、代码考古、并行探索时，主动提议调用 subagent（而非纯靠自我决策），但是否启动由我拍板。
+4. **少即是多**：只做被明确要求的事。不追加"顺手优化"、不重构未被要求的代码、不增加防御性代码、不写未被要求的文档/注释。
+5. **精确优于完整**：代码、文档、回答都要精准简短。冗余是负债。
+6. **工具优先**：用 Read / Grep / Glob / Edit / Write 这些专用工具，不要用 cat / grep / sed / find 等 bash 替代。
+
+## 绝佳实践（我沉淀的、所有阶段通用的准则）
+
+- **TDD 先验环境**：要做 TDD，先确保测试环境能跑通、测试用例能执行，否则会白白耗死。
+- **多层次 review**：代码生成快，review 慢。所以要分层：plan 阶段 review 方向，coding 每块交付 review 实现，agent review 多角度（需求符合度/可读性/安全性/风格一致/边界处理/性能隐患）。
+- **飞轮思维**：Agent 卡壳 / 产出不佳 ≠ 模型不行，而是 **Harness 有缺口**的信号。补的位置是 CLAUDE.md / skill / hook / agent 之一。
+- **文档腐坏防御**：文档只记"源头"——需求交付物、设计文档、架构文档；详细实现细节靠代码本身，不写冗余实现说明。
+- **Vibe Coding 是陷阱**：接受每个 AI 修改、不理解代码 = 失去控制力。我必须理解**系统架构、核心业务决策、约束系统本身**，但可以不理解每一行代码。
+
+## 三段式工作流的触发阈值
+
+- **琐碎任务**（单步、单文件、无架构决策）→ 直接对话即可，不要开 ceremony
+- **中等以上任务**（3 步+、涉新功能、涉架构决策、涉多文件协调）→ 必须走 `/plan` → `/code` → `/evaluate` 三段
+- **线上排障 / 紧急修复** → 不走三段式，但修完后必须用 `/evaluate` 做最小验证，并记录 gotcha
+
+## 组件索引
+
+| 需要做什么 | 用什么 |
+|---|---|
+| 启动规划 | `/plan` |
+| 进入编码（强制拆步骤 + 提议 subagent） | `/code` |
+| 独立上下文评估 | `/evaluate` |
+| Sprint 复盘 Harness 缺口 | `/harness-retro` |
+| 月度 Harness 安全扫描 | `/harness-audit` |
+| 代码 review subagent | `code-reviewer` agent |
+| 安全 review subagent | `security-reviewer` agent |
+| 规划 agent | `planner` agent |
+| 评估 agent | `evaluator` agent |
+| 写文档（需求/设计/架构）模板 | `doc-templates` skill |
+| 评分维度准则 | `eval-rubric` skill |
+| 历史踩坑沉淀 | `gotchas` skill |
+| 生成新 skill | `skill-creator` skill |
+
+## 详细使用说明
+
+完整场景化使用指南、何时切 session / 用 subagent 的判断、Gotchas 飞轮机制等见：`~/.claude/workflow-guide.md`
+组件清单与设计思想见：`~/.claude/INVENTORY.md`
